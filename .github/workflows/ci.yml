@@ -26,6 +26,12 @@ jobs:
         with:
           cmd: certutil -d sql:.pki/nssdb -N --empty-password
 
+      - name: Debug
+        run: |
+          pwd
+          ls -la
+          ls -la .pki/nssdb
+
       - name: Ensure file exists
         run: |
           test -f .pki/nssdb/cert9.db

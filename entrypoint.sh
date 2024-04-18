@@ -8,4 +8,4 @@ echo "Executing: $CMD"
 echo "Current directory: $(pwd)"
 echo
 
-$CMD
+su runner -c "$CMD"

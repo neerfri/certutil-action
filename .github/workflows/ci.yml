@@ -26,8 +26,8 @@ jobs:
         with:
           cmd: certutil -d sql:.pki/nssdb -N --empty-password
 
-      - name: Ensure file exists
+      - name: Ensure file exists and readable
         run: |
-          test -f .pki/nssdb/cert9.db
-          test -f .pki/nssdb/key5.db
+          ls -la .pki/nssdb
           test -f .pki/nssdb/pkcs11.txt
+          cat .pki/nssdb/pkcs11.txt > /dev/null

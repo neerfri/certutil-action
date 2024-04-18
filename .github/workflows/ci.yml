@@ -28,7 +28,9 @@ jobs:
 
       - name: Debug
         run: |
+          set +x
           pwd
+          getent group docker
           ls -la
           ls -la .pki/nssdb
 

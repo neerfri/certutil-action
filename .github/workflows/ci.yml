@@ -1,0 +1,33 @@
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  test-action:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v4
+
+      - run: mkdir -p .pki/nssdb
+
+      - name: Test Creating NSS DB
+        id: test-action
+        uses: ./
+        with:
+          cmd: certutil -d sql:.pki/nssdb -N --empty-password
+
+      - name: Ensure file exists
+        run: |
+          test -f .pki/nssdb/cert9.db
+          test -f .pki/nssdb/key5.db
+          test -f .pki/nssdb/pkcs11.txt

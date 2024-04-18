@@ -1,4 +1,4 @@
-name: 'certutil'
+name: certutil-action
 description: 'easily execute certutil commands'
 inputs:
   cmd:

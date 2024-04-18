@@ -1,4 +1,11 @@
 #!/bin/sh -l
 
-echo "$INPUT_CMD"
-$INPUT_CMD
+CMD=$INPUT_CMD
+if [ -z "$CMD" ]; then
+  CMD=$@
+fi
+echo "Executing: $CMD"
+echo "Current directory: $(pwd)"
+echo
+
+$CMD

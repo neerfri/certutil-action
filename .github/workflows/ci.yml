@@ -36,6 +36,4 @@ jobs:
 
       - name: Ensure file exists
         run: |
-          test -f .pki/nssdb/cert9.db
-          test -f .pki/nssdb/key5.db
-          test -f .pki/nssdb/pkcs11.txt
+          ls -al .pki/nssdb/cert9.db .pki/nssdb/key5.db .pki/nssdb/pkcs11.txt

@@ -26,14 +26,8 @@ jobs:
         with:
           cmd: certutil -d sql:.pki/nssdb -N --empty-password
 
-      - name: Debug
+      - name: Ensure file exists and readable
         run: |
-          set +x
-          pwd
-          getent group docker
-          ls -la
           ls -la .pki/nssdb
-
-      - name: Ensure file exists
-        run: |
-          ls -al .pki/nssdb/cert9.db .pki/nssdb/key5.db .pki/nssdb/pkcs11.txt
+          test -f .pki/nssdb/pkcs11.txt
+          cat .pki/nssdb/pkcs11.txt > /dev/null

@@ -1,0 +1,12 @@
+name: 'certutil'
+description: 'easily execute certutil commands'
+inputs:
+  cmd:
+    description: 'command to run'
+    required: true
+    default: 'certutil --syntax'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    CMD: ${{ inputs.cmd }}
